@@ -13,3 +13,13 @@
   display: block;
   margin: 15px;
 }
+.contactText {
+  font-size: 25px;
+  font-weight: 600;
+  margin: 15px;
+}
+.input:focus {
+  border: 5px solid rgb(115, 115, 231);
+  border-radius: 3px;
+  outline: none;
+}

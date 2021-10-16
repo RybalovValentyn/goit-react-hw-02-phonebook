@@ -4,7 +4,8 @@ class Phonebook extends Component {
 
     state = {
         contacts: [],
-        name: ''
+        name: '',
+        number: ''
       }
 
 
@@ -14,11 +15,14 @@ class Phonebook extends Component {
            
       })        };
 
-      
+
     handleSubmit = (event) =>{
             event.preventDefault();
-            this.setState({ contacts:[this.state.name]})
-            // this.setState({ contacts:[...this.state.contacts,this.state.name]  })
+            console.log(this.state.contacts);
+
+            this.setState({ contacts: {name:this.state.name, number:this.state.number}})
+            // this.setState({ contacts:[this.state.name]})
+           
                     
             this.props.onSubmit(this.state)//передали данные в АРР
            
@@ -26,7 +30,7 @@ class Phonebook extends Component {
            };
 
     resetForm = () => {
-        this.setState({name: ''}) //передали в стейт пустые данные
+        this.setState({name: '', number:''}) //передали в стейт пустые данные
     };
 
 render(){
@@ -42,6 +46,17 @@ render(){
   title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
   required
   value={this.state.name}
+  onChange={this.handleCange }
+/></label>
+
+<label className={s.labelInpt}> Number
+<input className={s.input}
+  type="tel"
+  name="number"
+  pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+  title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
+  required
+  value={this.state.number}
   onChange={this.handleCange }
 /></label>
 
